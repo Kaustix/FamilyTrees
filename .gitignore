@@ -34,7 +34,8 @@ jspm_packages
 .node_repl_history
 
 # Webstorm Files
-.idea/*
+.idea
 
 # ----- CUSTOM IGNORES ----- #
 config.json
+bin

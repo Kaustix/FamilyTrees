@@ -4,8 +4,9 @@ let UserSchema = new mongoose.Schema({
     id: String,
     token: String,
     email: String,
-    username: String
+    username: String,
+    created_at: Date,
+    updated_at: Date
 });
 
-const User = mongoose.model("User", UserSchema);
-export {User};
+export default UserModel = mongoose.model("User", UserSchema);
