@@ -1,9 +1,9 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import morgan from 'morgan';
-import * as Database from './app/database.js';
-
-Database.Connect();
+var express = require('express');
+var bodyParser = require('body-parser');
+var morgan = require('morgan');
+var database = require('./api/database');
+var routes = require('./api/routes');
+database.Connect();
 
 const port = process.env.port || 8080;
 const app =  express();
@@ -18,6 +18,8 @@ app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Headers", "X-Requested-With, content-type");
     next();
 });
+
+app.use('/', routes);
 
 app.listen(port, () => {
     console.log("Listening on Port: " + port);

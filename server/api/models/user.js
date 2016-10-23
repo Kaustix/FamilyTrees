@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+var mongoose = require('mongoose');
 
 let UserSchema = new mongoose.Schema({
     id: String,
@@ -9,4 +9,4 @@ let UserSchema = new mongoose.Schema({
     updated_at: Date
 });
 
-export default UserModel = mongoose.model("User", UserSchema);
+module.exports = mongoose.model("User", UserSchema);

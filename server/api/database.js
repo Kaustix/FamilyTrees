@@ -1,7 +1,8 @@
-import config from './config.js';
-import mongoose from 'mongoose';
+const config = require('./config.js');
+const mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
 
-export function Connect() {
+exports.Connect = () => {
     mongoose.connect(config.connectionString);
 
     var db = mongoose.connection;
@@ -10,4 +11,4 @@ export function Connect() {
     db.once("open", () => {
         console.log("Database Connected");
     });
-}
+};
