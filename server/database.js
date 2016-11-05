@@ -1,14 +1,14 @@
-const config = require('./config.js');
-const mongoose = require('mongoose');
-mongoose.Promise = global.Promise;
+import config from './config';
+import mongoose from 'mongoose';
 
-exports.Connect = () => {
+export function Connect() {
+    mongoose.Promise = global.Promise;
     mongoose.connect(config.connectionString);
 
-    var db = mongoose.connection;
+    const db = mongoose.connection;
 
     db.on("error", console.error.bind(console, "Database Connection Error:"));
     db.once("open", () => {
         console.log("Database Connected");
     });
-};
+}

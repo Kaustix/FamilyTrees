@@ -1,0 +1,20 @@
+{
+  "name": "familytrees",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Kiernan Lamarche"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/Kaustix/FamilyTrees",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
