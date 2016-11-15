@@ -38,7 +38,8 @@ bower_components
 .idea
 
 # ----- CUSTOM IGNORES ----- #
-config.json
+/server/config/development.js
+/server/config/production.js
 /app/dist/
-schema.json
-schema.graphql
+/server/schema/schema.graphql
+/server/schema/schema.json

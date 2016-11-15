@@ -1,27 +1,24 @@
-import fs from 'fs';
 import path from 'path';
+import fs from 'fs';
 import {graphql} from 'graphql';
 import {introspectionQuery, printSchema} from 'graphql/utilities';
 import schema from '../schema/schema';
 
-// Save JSON of full schema introspection for Babel Relay Plugin to use
-(async () => {
-    const result = await (graphql(schema, introspectionQuery));
-    if (result.errors) {
-        console.error( // eslint-disable-line no-console
-            'ERROR introspecting schema: ',
-            JSON.stringify(result.errors, null, 2)
-        );
-    } else {
-        fs.writeFileSync(
-            path.join(__dirname, '../schema/schema.json'),
-            JSON.stringify(result, null, 2)
-        );
-    }
-})();
+const jsonFile = path.join(__dirname, '../schema/schema.json');
+const graphQLFile = path.join(__dirname, '../schema/schema.graphql');
 
-// Save user readable type system shorthand of schema
-fs.writeFileSync(
-    path.join(__dirname, '../schema/schema.graphql'),
-    printSchema(schema)
-);
+async function updateSchema() {
+  try {
+    const json = await graphql(schema, introspectionQuery);
+    fs.writeFileSync(jsonFile, JSON.stringify(json, null, 2));
+    fs.writeFileSync(graphQLFile, printSchema(schema));
+    console.log('Schema has been regenerated');
+  } catch (err) {
+    console.error(err.stack);
+  }
+}
+
+// Run the function directly, if it's called from the command line
+if (!module.parent) updateSchema();
+
+export default updateSchema;

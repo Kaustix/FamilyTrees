@@ -1,0 +1,17 @@
+{
+  "development": {
+    "connectionString": "mongodb://admin:asdf123!@ds019480.mlab.com:19480/familytrees",
+    "jwtSecret": "",
+    "tokenExpiry": 86400000,
+    "googleAuth": {
+      "clientID": "",
+      "clientSecret": "",
+      "callBackUrl": ""
+    }
+  },
+  "production": {
+    "connectionString": "",
+    "jwtSecret": "",
+    "tokenExpiry": 86400000
+  }
+}
